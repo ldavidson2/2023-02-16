@@ -18,7 +18,7 @@
       "function": {
         "newFunction": {
           "deploymentBucketName": "amplify-amplifyd6bf237121644-staging-153322-deployment",
-          "s3Key": "amplify-builds/newFunction-594252636c4756702f71-build.zip"
+          "s3Key": "amplify-builds/newFunction-7734307174695538384f-build.zip"
         }
       },
       "api": {
