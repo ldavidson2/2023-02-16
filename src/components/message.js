@@ -15,7 +15,7 @@ export default function Message() {
     try {
       let res = await API.get(myAPI, path, {});
       let result = res.data;
-      setresult(res);
+      setresult(result);
     } catch (e) {
       console.log(e);
     }
@@ -26,7 +26,7 @@ export default function Message() {
   }, []);
   return (
     <div>
-      <h1>Results: </h1>
+      <h1>Results:</h1>
       {result}
     </div>
   );
