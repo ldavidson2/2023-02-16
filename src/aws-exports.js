@@ -9,13 +9,6 @@ const awsmobile = {
             "tableName": "test2DB-staging",
             "region": "us-east-2"
         }
-    ],
-    "aws_cloud_logic_custom": [
-        {
-            "name": "test2API",
-            "endpoint": "https://fsowfrr4v6.execute-api.us-east-2.amazonaws.com/staging",
-            "region": "us-east-2"
-        }
     ]
 };
 
