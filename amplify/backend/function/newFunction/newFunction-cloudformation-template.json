@@ -16,13 +16,17 @@
     "s3Key": {
       "Type": "String"
     },
-    "apinewAPIApiName": {
+    "storageapiTestTableName": {
       "Type": "String",
-      "Default": "apinewAPIApiName"
+      "Default": "storageapiTestTableName"
     },
-    "apinewAPIApiId": {
+    "storageapiTestTableArn": {
       "Type": "String",
-      "Default": "apinewAPIApiId"
+      "Default": "storageapiTestTableArn"
+    },
+    "storageapiTestTableStreamArn": {
+      "Type": "String",
+      "Default": "storageapiTestTableStreamArn"
     }
   },
   "Conditions": {
@@ -78,11 +82,14 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "API_NEWAPI_APINAME": {
-              "Ref": "apinewAPIApiName"
+            "STORAGE_APITESTTABLE_NAME": {
+              "Ref": "storageapiTestTableName"
             },
-            "API_NEWAPI_APIID": {
-              "Ref": "apinewAPIApiId"
+            "STORAGE_APITESTTABLE_ARN": {
+              "Ref": "storageapiTestTableArn"
+            },
+            "STORAGE_APITESTTABLE_STREAMARN": {
+              "Ref": "storageapiTestTableStreamArn"
             }
           }
         },
@@ -197,28 +204,31 @@
             {
               "Effect": "Allow",
               "Action": [
-                "apigateway:POST",
-                "apigateway:PUT",
-                "apigateway:GET",
-                "apigateway:HEAD",
-                "apigateway:OPTIONS",
-                "apigateway:PATCH",
-                "apigateway:DELETE"
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
               ],
               "Resource": [
                 {
+                  "Ref": "storageapiTestTableArn"
+                },
+                {
                   "Fn::Join": [
-                    "",
+                    "/",
                     [
-                      "arn:aws:apigateway:",
                       {
-                        "Ref": "AWS::Region"
+                        "Ref": "storageapiTestTableArn"
                       },
-                      "::/restapis/",
-                      {
-                        "Ref": "apinewAPIApiName"
-                      },
-                      "/*"
+                      "index/*"
                     ]
                   ]
                 }
