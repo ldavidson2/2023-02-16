@@ -15,7 +15,7 @@ export default function Message() {
     try {
       let res = await API.get(myAPI, path, {});
       let result = res.data;
-      setresult(result);
+      setresult(res);
     } catch (e) {
       console.log(e);
     }
